@@ -1,11 +1,16 @@
- const express = require('express');
- const router = express.Router();
- const User = require('../models/User');
+// routes/hotel.js
+const express = require('express');
+const router = express.Router();
+const Hotel = require('../models/Hotel');
 
-// Route to register a new user
- router.post('/register', (req, res) => {
-// Implement user registration logic here
- });
+// Route to list available hotels
+router.get('/hotels', (req, res) => {
+  // Implement hotel listing logic here
+});
 
- module.exports = router;
-//   
+// Route to book a hotel
+router.post('/book', (req, res) => {
+  // Implement hotel booking logic here
+});
+
+module.exports = router;
