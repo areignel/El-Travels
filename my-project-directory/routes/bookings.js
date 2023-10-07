@@ -5,7 +5,7 @@ const router = express.Router();
 const db = require('../database'); // Adjust the path to your database.js file
 
 // Make a booking for a destination
-router.post('/make-booking', async (req, res) => {
+router.post('/api/bookings', async (req, res) => {
   try {
     const { userId, destinationId } = req.body;
 
@@ -42,7 +42,7 @@ router.post('/make-booking', async (req, res) => {
 });
 
 // Get user bookings
-router.get('/user-bookings/:userId', async (req, res) => {
+router.get('/api/bookings/user/:userId', async (req, res) => {
   try {
     const userId = req.params.userId;
     const bookings = await getUserBookings(userId);

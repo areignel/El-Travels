@@ -8,7 +8,7 @@ const router = express.Router();
 const db = require('../database'); // Adjust the path to your database.js file
 
 // Register a new user
-router.post('/register', async (req, res) => {
+router.post('/api/register', async (req, res) => {
   try {
     const { username, password } = req.body;
     
@@ -41,7 +41,7 @@ router.post('/register', async (req, res) => {
 });
 
 // Login a user and issue a JWT token
-router.post('/login', passport.authenticate('local', { session: false }), (req, res) => {
+router.post('/api/login', passport.authenticate('local', { session: false }), (req, res) => {
   const user = req.user;
 
   // Create a JWT token

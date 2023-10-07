@@ -5,7 +5,7 @@ const router = express.Router();
 const db = require('../database'); // Adjust the path to your database.js file
 
 // Create a new destination
-router.post('/', (req, res) => {
+router.post('/api/destinations', (req, res) => {
   const { name, description } = req.body;
   const sql = 'INSERT INTO destinations (name, description) VALUES (?, ?)';
   const values = [name, description];
@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
 });
 
 // List all available destinations
-router.get('/', (req, res) => {
+router.get('/api/destinations', (req, res) => {
   const sql = 'SELECT * FROM destinations';
 
   db.query(sql, (err, results) => {
@@ -40,7 +40,7 @@ router.get('/', (req, res) => {
 });
 
 // Retrieve details about a specific destination
-router.get('/:id', (req, res) => {
+router.get('/api/destinations/:id', (req, res) => {
   const destinationId = req.params.id;
   const sql = 'SELECT * FROM destinations WHERE id = ?';
   const values = [destinationId];
@@ -60,7 +60,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Update an existing destination
-router.put('/:id', (req, res) => {
+router.put('/api/destinations/:id', (req, res) => {
   const destinationId = req.params.id;
   const { name, description } = req.body;
   const sql = 'UPDATE destinations SET name = ?, description = ? WHERE id = ?';
@@ -81,7 +81,7 @@ router.put('/:id', (req, res) => {
 });
 
 // Delete a destination
-router.delete('/:id', (req, res) => {
+router.delete('/api/destinations/:destinationId', (req, res) => {
   const destinationId = req.params.id;
   const sql = 'DELETE FROM destinations WHERE id = ?';
   const values = [destinationId];
